@@ -96,7 +96,7 @@ body {
 
 /* POPUP FORM */
 
-#add-book-form {
+.container {
     display: flex;
     flex-direction: column;
     margin-inline: 25px;
@@ -110,16 +110,17 @@ body {
     font-weight: 600;
 }
 
-#add-book-form input {
+.container input {
     font-size: 1.1rem;
     padding-block: 8px;
     border-radius: 8px;
     border: none;
+    margin-inline: 15px;
     padding-left: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px;
 }
 
-#add-book-form input:focus {
+.container input:focus {
     outline: none;
 }
 
@@ -131,10 +132,23 @@ input[type=checkbox] {
     margin-top: 15px;
 }
 
-#add-book-form button {
-    margin-top: 10px;
+#submit {
+    font-size: 1rem;
+    margin-inline: 25px;
+    margin-top: 2px;
     background-color: #9fff9c;
     border-radius: 10px;
     border: none;
     padding-block: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px;
+}
+
+.error {
+    position: relative;
+    bottom: 5px;
+    font-size: 0.9rem;
+    color: rgb(255, 0, 0);
+    margin-inline: 25px;
+    text-align: left;
+    visibility: hidden;
 }

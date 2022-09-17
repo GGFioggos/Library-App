@@ -4,12 +4,13 @@ const content = document.querySelector('.content');
 const addBookButton = document.querySelector("#new-book");
 const container = document.querySelector(".popup .container");
 const popup = document.querySelector(".popup");
-const submitButton = document.querySelector("submit");
+const submitButton = document.querySelector("#submit");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const isreadinput = document.querySelector("#question");
 const form = document.querySelector("add-book-form");
+const error = document.querySelector(".error");
 
 addBookButton.addEventListener("click", () => {
     popup.style.visibility = "visible";
@@ -20,12 +21,6 @@ document.addEventListener('click', (event) => {
        popup.style.visibility = "hidden";
     }
 });
-
-
-
-
-
-
 
 // LOGIC - BACKEND
 
@@ -47,6 +42,17 @@ let daVinciCode = new book('Da Vinci Code', 'Dan Brown', 318, false, "images/da_
 addBookToLibrary(theHobbit);
 addBookToLibrary(donQuixote);
 addBookToLibrary(daVinciCode);
+
+submitButton.addEventListener('click', () => {
+    if (validform()){
+    let addedBook = new book(title.value, author.value, pages.value, question.value);
+    addBookToLibrary(addedBook);
+    clearform();
+    popup.style.visibility = 'hidden';
+    }else{
+        error.style.visibility = 'visible';
+    }
+});
 
 
 function addBookToLibrary(book) {
@@ -102,3 +108,13 @@ function addBookToLibrary(book) {
     information.appendChild(seconddiv);
 }
 
+function validform() {
+    return(title.value !== '' && author.value !== '' && pages.value !== '');
+}
+
+function clearform() {
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    question.checked = false;
+}
