@@ -1,0 +1,48 @@
+html,body {
+    font-family: 'sans-serif';
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.content {
+    border: 1px solid red;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.card {
+    margin-top: 50px;
+    border: 2px solid blue;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .information {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 15px;
+}
+
+.isread {
+    text-align: right;
+}
+
+.card img {
+    height: 450px;
+    width: 350px;
+}
