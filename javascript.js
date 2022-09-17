@@ -1,4 +1,20 @@
+// HTML - FRONTEND
+
 const content = document.querySelector('.content');
+const popup = document.querySelector('.popup');
+const addBookButton = document.querySelector("#new-book");
+
+popup.style.visibility = 'hidden';
+
+addBookButton.onclick = () => {
+    popup.style.visibility = "visible";
+}
+
+
+
+
+
+// LOGIC - BACKEND
 
 let myLibrary = [];
 
@@ -71,8 +87,5 @@ function addBookToLibrary(book) {
 
     seconddiv.appendChild(read);
     information.appendChild(seconddiv);
-
-
-
 }
 

@@ -32,6 +32,25 @@
             </div>
             -->
         </div>
+        <button id="new-book">+</button>
+    </div>
+    <div class="popup">
+        <div class="container">
+            <div class="prompt">Add new book</div>
+            <form action="/" method="post" id="add-book-form">
+                <input type="text" placeholder="Title">
+
+                <input type="text" placeholder="Author">
+
+                <input type="number" placeholder="Pages" min="0">
+                <div>
+                    <label for="question" id="checkbox-question">Have you read it?</label>
+                    <input class="check" type="checkbox" id="question">
+                </div>
+
+                <button type="submit" id="submit" disabled>SUBMIT</button>
+            </form>
+        </div>
     </div>
     </div>
 </body>

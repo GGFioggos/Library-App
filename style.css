@@ -1,5 +1,6 @@
-html,body {
-    font-family: 'sans-serif';
+html,
+body {
+    font-family: "Poppins", sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -15,8 +16,9 @@ html,body {
     text-align: center;
 }
 
+/* MAIN CONTENT */
+
 .content {
-    border: 1px solid red;
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -24,7 +26,6 @@ html,body {
 
 .card {
     margin-top: 50px;
-    border: 2px solid blue;
     justify-self: center;
     display: flex;
     flex-direction: column;
@@ -45,4 +46,91 @@ html,body {
 .card img {
     height: 450px;
     width: 350px;
+}
+
+#new-book {
+    border: none;
+    outline: none;
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    background: rgb(11, 101, 255);
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
+
+/* POPUP */
+
+.popup {
+    background-color: rgba(0, 0, 0, 0.61);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 100%;
+    width: 100%;
+}
+
+.popup .container {
+    text-align: center;
+    gap: 15px;
+    height: 400px;
+    width: 350px;
+    background-color: rgb(167, 167, 167);
+    border-radius: 15px;
+}
+
+.container .prompt {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* POPUP FORM */
+
+#add-book-form {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 25px;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#checkbox-question {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#add-book-form input {
+    font-size: 1.1rem;
+    padding-block: 8px;
+    border-radius: 8px;
+    border: none;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px;
+}
+
+#add-book-form input:focus {
+    outline: none;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}
+
+
+
+#add-book-form button {
+    background-color: #9fff9c;
+    border-radius: 10px;
+    border: none;
+    padding-block: 10px;
 }
