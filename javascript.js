@@ -17,8 +17,10 @@ addBookButton.addEventListener("click", () => {
 });
 
 document.addEventListener('click', (event) => {
-    if (popup.style.visibility == 'visible' && !container.contains(event.target) && !addBookButton.contains(event.target)){
-       popup.style.visibility = "hidden";
+    if (popup.style.visibility == 'visible' && !container.contains(event.target) && !addBookButton.contains(event.target)) {
+        popup.style.visibility = "hidden";
+        error.style.visibility = "hidden";
+        clearform();
     }
 });
 
@@ -34,22 +36,23 @@ function book(title, author, pages, isread, image = "images/da_vinci_code.jpg") 
     this.image_link = image; // DEFAULT
 }
 
-
 let theHobbit = new book('The Hobbit', 'J.R.R. Tolkien', 290, false, "images/thehobbit.jpg");
-let donQuixote = new book('Don Quixote', 'Miguel De Cervantes', 190, false, "images/don-quixote.jpg");
+let donQuixote = new book('Don Quixote', 'Miguel De Cervantes', 190, true, "images/don-quixote.jpg");
 let daVinciCode = new book('Da Vinci Code', 'Dan Brown', 318, false, "images/da_vinci_code.jpg");
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(donQuixote);
 addBookToLibrary(daVinciCode);
+addBookToLibrary(daVinciCode);addBookToLibrary(daVinciCode);addBookToLibrary(daVinciCode);
 
 submitButton.addEventListener('click', () => {
-    if (validform()){
-    let addedBook = new book(title.value, author.value, pages.value, question.value);
-    addBookToLibrary(addedBook);
-    clearform();
-    popup.style.visibility = 'hidden';
-    }else{
+    if (validform()) {
+        let addedBook = new book(title.value, author.value, pages.value, isreadinput.checked);
+        addBookToLibrary(addedBook);
+        clearform();
+        popup.style.visibility = 'hidden';
+        error.style.visibility = 'hidden';
+    } else {
         error.style.visibility = 'visible';
     }
 });
@@ -57,8 +60,6 @@ submitButton.addEventListener('click', () => {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-
-    const content = document.querySelector('.content');
 
     const card = document.createElement('div');
     card.classList.add('card');
@@ -85,7 +86,7 @@ function addBookToLibrary(book) {
 
     const pages = document.createElement('div');
     pages.classList.add('pages');
-    pages.textContent = book.pages;
+    pages.textContent = book.pages + " Pages";
 
     div.appendChild(pages);
     information.appendChild(div);
@@ -102,19 +103,20 @@ function addBookToLibrary(book) {
 
     const read = document.createElement('div');
     read.classList.add('isread');
-    read.textContent = book.read? 'Read': 'Not Read';
+    read.textContent = book.isread ? 'Read' : 'Not Read';
+    read.style.color = book.isread ? 'green' : 'red';
 
     seconddiv.appendChild(read);
     information.appendChild(seconddiv);
 }
 
 function validform() {
-    return(title.value !== '' && author.value !== '' && pages.value !== '');
+    return (title.value !== '' && author.value !== '' && pages.value !== '');
 }
 
 function clearform() {
     title.value = '';
     author.value = '';
     pages.value = '';
-    question.checked = false;
+    isreadinput.checked = false;
 }
