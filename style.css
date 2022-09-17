@@ -76,12 +76,13 @@ body {
     gap: 15px;
     height: 100%;
     width: 100%;
+    visibility: hidden;
 }
 
 .popup .container {
     text-align: center;
     gap: 15px;
-    height: 400px;
+    height: 380px;
     width: 350px;
     background-color: rgb(167, 167, 167);
     border-radius: 15px;
@@ -126,11 +127,14 @@ input[type=checkbox] {
     transform: scale(1.5);
 }
 
-
+#question {
+    margin-top: 15px;
+}
 
 #add-book-form button {
+    margin-top: 10px;
     background-color: #9fff9c;
     border-radius: 10px;
     border: none;
-    padding-block: 10px;
+    padding-block: 15px;
 }

@@ -1,14 +1,27 @@
 // HTML - FRONTEND
 
 const content = document.querySelector('.content');
-const popup = document.querySelector('.popup');
 const addBookButton = document.querySelector("#new-book");
+const container = document.querySelector(".popup .container");
+const popup = document.querySelector(".popup");
+const submitButton = document.querySelector("submit");
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const isreadinput = document.querySelector("#question");
+const form = document.querySelector("add-book-form");
 
-popup.style.visibility = 'hidden';
-
-addBookButton.onclick = () => {
+addBookButton.addEventListener("click", () => {
     popup.style.visibility = "visible";
-}
+});
+
+document.addEventListener('click', (event) => {
+    if (popup.style.visibility == 'visible' && !container.contains(event.target) && !addBookButton.contains(event.target)){
+       popup.style.visibility = "hidden";
+    }
+});
+
+
 
 
 
