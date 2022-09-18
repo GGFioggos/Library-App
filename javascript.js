@@ -1,5 +1,3 @@
-// HTML - FRONTEND
-
 const content = document.querySelector('.content');
 const addBookButton = document.querySelector("#new-book");
 const container = document.querySelector(".popup .container");
@@ -43,7 +41,7 @@ let daVinciCode = new book('Da Vinci Code', 'Dan Brown', 318, false, "images/da_
 addBookToLibrary(theHobbit);
 addBookToLibrary(donQuixote);
 addBookToLibrary(daVinciCode);
-addBookToLibrary(daVinciCode);addBookToLibrary(daVinciCode);addBookToLibrary(daVinciCode);
+addBookToLibrary(daVinciCode);
 
 submitButton.addEventListener('click', () => {
     if (validform()) {
@@ -66,10 +64,39 @@ function addBookToLibrary(book) {
 
     content.appendChild(card);
 
+    const actionsdiv = document.createElement('div');
+    
     const img = document.createElement('img');
+    img.classList.add('book-cover');
     img.src = book.image_link;
 
-    card.appendChild(img);
+    const actionslist = document.createElement('ul');
+    actionslist.classList.add('actions');
+
+    const action1 = document.createElement('li');
+    const action2 = document.createElement('li');
+    const action3 = document.createElement('li');
+
+    const action1img = document.createElement('img');
+    const action2img = document.createElement('img');
+    const action3img = document.createElement('img');
+
+    action1img.src = "images/read.png";
+    action2img.src = "images/edit.png";
+    action3img.src = "images/bin.png";
+
+    action1.appendChild(action1img);
+    action2.appendChild(action2img);
+    action3.appendChild(action3img);
+
+    actionslist.appendChild(action1);
+    actionslist.appendChild(action2);
+    actionslist.appendChild(action3);
+
+    actionsdiv.appendChild(img);
+    actionsdiv.appendChild(actionslist);
+
+    card.appendChild(actionsdiv);
 
     const information = document.createElement('div');
     information.classList.add('information');

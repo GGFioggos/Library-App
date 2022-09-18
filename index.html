@@ -16,9 +16,17 @@
             <div class="app-name">My Library</div>
         </div>
         <div class="content">
-            <!-- SAMPLE CARD 
+            <!-- SAMPLE CARD
             <div class="card">
-                <img src="images/thehobbit.jpg" />
+                <div>
+                    <img class="book-cover" src="images/thehobbit.jpg" />
+                    <ul class="actions">
+                        <li><img src="images/bin.png"> 
+                            1</li>
+                        <li>2</li>
+                        <li>3</li>
+                    </ul>
+                </div>
                 <div class="information">
                     <div>
                         <div class="title">The Hobbit</div>
@@ -29,29 +37,29 @@
                         <div class="isread">Read</div>
                     </div>
                 </div>
-            </div>
-            -->
+            </div> 
         </div>
-        <button id="new-book">+</button>
-    </div>
-    <div class="popup">
-        <div class="container">
-            <div class="prompt">Add new book</div>
-
-            <input type="text" id="title" name="book-title" placeholder="Title" required>
-
-            <input type="text" id="author" name="book-author" placeholder="Author" required>
-
-            <input type="number" id="pages" name="book-pages" placeholder="Pages" min="0" required>
-            <div>
-                <label for="question" id="checkbox-question">Have you read it?</label>
-                <input class="check" type="checkbox" id="question">
-            </div>
-
-            <button type="submit" id="submit">SUBMIT</button>
-            <div class="error">*Please fill out all fields</div>
+        -->
+            <button id="new-book">+</button>
         </div>
-    </div>
+        <div class="popup">
+            <div class="container">
+                <div class="prompt">Add new book</div>
+
+                <input type="text" id="title" name="book-title" placeholder="Title" required />
+
+                <input type="text" id="author" name="book-author" placeholder="Author" required />
+
+                <input type="number" id="pages" name="book-pages" placeholder="Pages" min="0" required />
+                <div>
+                    <label for="question" id="checkbox-question">Have you read it?</label>
+                    <input class="check" type="checkbox" id="question" />
+                </div>
+
+                <button type="submit" id="submit">SUBMIT</button>
+                <div class="error">*Please fill out all fields</div>
+            </div>
+        </div>
     </div>
 </body>
 

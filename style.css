@@ -1,36 +1,25 @@
-:root {
-    --background-color: #52a7c1;
-    --background-image: linear-gradient(315deg, #52a7c1 0%, #b3f6d8ac 74%);
-}
-
-
-
 html,
 body {
     font-family: "Poppins", sans-serif;
     padding: 0;
     margin: 0;
+    background-color: blue;
 }
 
-body {
-    background-color: #52a7c1;
-    --background-image: linear-gradient(315deg, #52a7c1 0%, #b3f6d8ac 74%);
-
+ul,li {
+    margin: 0;
+    padding: 0;
 }
 
 
 .container {
-    border-radius: 30px;
-    min-height: 98vh;
-    margin-top: 1vh;
-    margin-inline: 0.3vw;
-    background-color: var(--background-color);
-    background-image: var(--background-image);
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .header {
+    color: white;
     padding: 20px;
     font-size: 2rem;
     text-align: center;
@@ -39,6 +28,7 @@ body {
 /* MAIN CONTENT */
 
 .content {
+    border-radius: 16px;
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
@@ -46,6 +36,9 @@ body {
 }
 
 .card {
+    position: relative;
+    color: white;
+    background-color: black;
     border-radius: 25px;
     overflow: hidden;
     margin-block: 30px;
@@ -57,8 +50,7 @@ body {
 
 .card .information {
     padding-block: 12px;
-    color: white;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     font-size: 0.9rem;
     display: flex;
     flex-direction: row;
@@ -66,13 +58,43 @@ body {
     padding-inline: 15px;
 }
 
+.actions {
+    position: absolute;
+    bottom: 70px;
+    list-style: none;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 8px;
+    background-color: rgba(45, 45, 45, 0.472);
+}
+
+.actions li {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.actions img {
+    width: 90%;
+    height: 90%;
+}
+
 .isread {
     text-align: right;
 }
 
-.card img {
+.card .book-cover {
     height: 350px;
     width: 250px;
+}
+
+.card:hover div .book-cover {
+    filter: blur(4px);
+}
+
+.card:not(:hover) .actions{
+    visibility: hidden;
 }
 
 #new-book {
