@@ -41,7 +41,19 @@ let daVinciCode = new book('Da Vinci Code', 'Dan Brown', 318, false, "images/da_
 addBookToLibrary(theHobbit);
 addBookToLibrary(donQuixote);
 addBookToLibrary(daVinciCode);
-addBookToLibrary(daVinciCode);
+
+const actions = document.querySelectorAll('.actions li');
+
+actions.forEach((action) => {
+    action.addEventListener('click', (event) => {
+        bookName = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[0].childNodes[0].textContent;
+        //bookAuthor = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].textContent;
+        action = event.target.parentNode.classList[0];
+
+        actionHandler(bookName, action);
+    })
+});
+
 
 submitButton.addEventListener('click', () => {
     if (validform()) {
@@ -65,7 +77,7 @@ function addBookToLibrary(book) {
     content.appendChild(card);
 
     const actionsdiv = document.createElement('div');
-    
+
     const img = document.createElement('img');
     img.classList.add('book-cover');
     img.src = book.image_link;
@@ -74,8 +86,11 @@ function addBookToLibrary(book) {
     actionslist.classList.add('actions');
 
     const action1 = document.createElement('li');
+    action1.classList.add('read');
     const action2 = document.createElement('li');
+    action2.classList.add('edit');
     const action3 = document.createElement('li');
+    action3.classList.add('delete');
 
     const action1img = document.createElement('img');
     const action2img = document.createElement('img');
@@ -135,6 +150,8 @@ function addBookToLibrary(book) {
 
     seconddiv.appendChild(read);
     information.appendChild(seconddiv);
+
+    allCards = getAllCards();
 }
 
 function validform() {
@@ -146,4 +163,38 @@ function clearform() {
     author.value = '';
     pages.value = '';
     isreadinput.checked = false;
+}
+
+function actionHandler(bookName, action) {
+    let bookIndex = findBook(bookName);
+    if (bookIndex != -1) {
+        if (action == "read") {
+            readBook(bookIndex);
+        } else if (action == "edit") {
+
+        } else if (action == "delete") {
+            deleteBook(bookIndex);
+        }
+    } else {
+        console.log("Book not found");
+    }
+}
+
+
+function deleteBook(bookIndex) {
+    myLibrary = myLibrary.filter(b => b.title != myLibrary[bookIndex].title);
+    allCards[bookIndex].remove();
+    allCards = getAllCards();
+}
+
+function findBook(bookName) {
+    return (myLibrary.map(b => b.title).indexOf(bookName));
+}
+
+function readBook(bookIndex) {
+    myLibrary[bookIndex].isread = myLibrary[bookIndex].isread? false : true;
+}
+
+function getAllCards() {
+    return document.querySelectorAll('.card');
 }
