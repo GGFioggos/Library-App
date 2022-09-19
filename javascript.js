@@ -7,6 +7,7 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const isreadinput = document.querySelector("#question");
+const image_link = document.querySelector("#image-link");
 const form = document.querySelector("add-book-form");
 const error = document.querySelector(".error");
 
@@ -37,14 +38,19 @@ function book(title, author, pages, isread, image = "images/da_vinci_code.jpg") 
 let theHobbit = new book('The Hobbit', 'J.R.R. Tolkien', 290, false, "images/thehobbit.jpg");
 let donQuixote = new book('Don Quixote', 'Miguel De Cervantes', 190, true, "images/don-quixote.jpg");
 let daVinciCode = new book('Da Vinci Code', 'Dan Brown', 318, false, "images/da_vinci_code.jpg");
+let harryPotter = new book('Harry Potter', "J.K Rowling", 260, false, "images/harry-potter.jpg");
+let lotr = new book('Lord of the Rings', 'J.R.R. Tolkien', 238, false, "images/lotr.jpg");
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(donQuixote);
 addBookToLibrary(daVinciCode);
+addBookToLibrary(harryPotter);
+addBookToLibrary(lotr);
+
 
 submitButton.addEventListener('click', () => {
     if (validform()) {
-        let addedBook = new book(title.value, author.value, pages.value, isreadinput.checked);
+        let addedBook = new book(title.value, author.value, pages.value, isreadinput.checked, image_link.value);
         addBookToLibrary(addedBook);
         clearform();
         popup.style.visibility = 'hidden';
@@ -57,6 +63,8 @@ submitButton.addEventListener('click', () => {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+
+
 
     const card = document.createElement('div');
     card.classList.add('card');
@@ -161,6 +169,7 @@ function clearform() {
     title.value = '';
     author.value = '';
     pages.value = '';
+    image_link.value = '';
     isreadinput.checked = false;
 }
 
@@ -222,6 +231,9 @@ function editBook(bookIndex) {
             }
         })
     });
+
+    edits[0].focus()
+
 
 }
 
