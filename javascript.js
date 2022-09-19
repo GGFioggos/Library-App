@@ -42,19 +42,6 @@ addBookToLibrary(theHobbit);
 addBookToLibrary(donQuixote);
 addBookToLibrary(daVinciCode);
 
-const actions = document.querySelectorAll('.actions li');
-
-actions.forEach((action) => {
-    action.addEventListener('click', (event) => {
-        bookName = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[0].childNodes[0].textContent;
-        //bookAuthor = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].textContent;
-        action = event.target.parentNode.classList[0];
-
-        actionHandler(bookName, action);
-    })
-});
-
-
 submitButton.addEventListener('click', () => {
     if (validform()) {
         let addedBook = new book(title.value, author.value, pages.value, isreadinput.checked);
@@ -91,6 +78,18 @@ function addBookToLibrary(book) {
     action2.classList.add('edit');
     const action3 = document.createElement('li');
     action3.classList.add('delete');
+
+    let actions = [action1,action2,action3];
+
+    actions.forEach((action) => {
+        action.addEventListener('click', (event) => {
+            bookName = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[0].childNodes[0].textContent;
+            //bookAuthor = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].textContent;
+            action = event.target.parentNode.classList[0];
+    
+            actionHandler(bookName, action);
+        })
+    });
 
     const action1img = document.createElement('img');
     const action2img = document.createElement('img');
