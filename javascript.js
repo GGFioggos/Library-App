@@ -79,14 +79,14 @@ function addBookToLibrary(book) {
     const action3 = document.createElement('li');
     action3.classList.add('delete');
 
-    let actions = [action1,action2,action3];
+    let actions = [action1, action2, action3];
 
     actions.forEach((action) => {
         action.addEventListener('click', (event) => {
             bookName = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[0].childNodes[0].textContent;
             //bookAuthor = event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].textContent;
             action = event.target.parentNode.classList[0];
-    
+
             actionHandler(bookName, action);
         })
     });
@@ -167,11 +167,11 @@ function clearform() {
 function actionHandler(bookName, action) {
     let bookIndex = findBook(bookName);
     if (bookIndex != -1) {
-        if (action == "read") {
+        if (action == "read") { //READ 
             readBook(bookIndex);
-        } else if (action == "edit") {
-
-        } else if (action == "delete") {
+        } else if (action == "edit") { //EDIT
+            editBook(bookIndex);
+        } else if (action == "delete") { //DELETE
             deleteBook(bookIndex);
         }
     } else {
@@ -191,9 +191,46 @@ function findBook(bookName) {
 }
 
 function readBook(bookIndex) {
-    myLibrary[bookIndex].isread = myLibrary[bookIndex].isread? false : true;
+    myLibrary[bookIndex].isread = myLibrary[bookIndex].isread ? false : true;
+    allCards[bookIndex].childNodes[1].childNodes[1].childNodes[1].textContent = myLibrary[bookIndex].isread ? "Read" : "Not Read";
+    allCards[bookIndex].childNodes[1].childNodes[1].childNodes[1].style.color = myLibrary[bookIndex].isread ? "green" : "red";
+}
+
+function editBook(bookIndex) {
+    edits = [allCards[bookIndex].childNodes[1].childNodes[0].childNodes[0],
+    allCards[bookIndex].childNodes[1].childNodes[0].childNodes[1],
+    allCards[bookIndex].childNodes[1].childNodes[1].childNodes[0]];
+
+    edits.forEach((edit) => {
+        edit.contentEditable = "true";
+    });
+
+    edits.forEach(edit => {
+        edit.addEventListener('focusout', () => {
+            edit.contentEditable = "false";
+            saveChanges(bookIndex, edits);
+        });
+    })
+
+    edits.forEach(edit => {
+        edit.addEventListener('keypress', (e) => {
+            if (e.which === 13 && document.activeElement === edit) {
+                edit.contentEditable = "false";
+            } else if (e.which === 13) {
+                edit.contentEditable = "false";
+                saveChanges(bookIndex, edits);
+            }
+        })
+    });
+
 }
 
 function getAllCards() {
     return document.querySelectorAll('.card');
+}
+
+function saveChanges(bookIndex) {
+    myLibrary[bookIndex].title = edits[0].textContent;
+    myLibrary[bookIndex].pages = edits[1].textContent;
+    myLibrary[bookIndex].author = edits[2].textContent;
 }
