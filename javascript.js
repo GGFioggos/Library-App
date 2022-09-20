@@ -64,8 +64,6 @@ submitButton.addEventListener('click', () => {
 function addBookToLibrary(book) {
     myLibrary.push(book);
 
-
-
     const card = document.createElement('div');
     card.classList.add('card');
 
